@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promedio de temperaturas de pacientes</title>
+</head>
+<body>
+    <section id="e2">
+        <h3>temperaturas de pacientes</h3>
+
+        <input type="number" id="numPac" placeholder="número de pacientes">
+        <button onclick="registrarPacientes()">registrar</button>
+
+        <div id="tempInputs"></div>
+        <button onclick="calcularPromedio()">calcular promedio</button>
+
+        <div class="output" id="out2"></div>
+    </section>
+
+<script>
+let numP = 0;
+
+function registrarPacientes() {
+    numP = parseInt(document.getElementById("numPac").value);
+    let cont = document.getElementById("tempInputs");
+    cont.innerHTML = "";
+
+    for (let i = 0; i < numP; i++) {
+        cont.innerHTML += `<input id="tp${i}" placeholder="temp paciente ${i+1}"><br>`;
+    }
+}
+
+function calcularPromedio() {
+    let suma = 0;
+
+    for (let i = 0; i < numP; i++) {
+        let val = parseFloat(document.getElementById(`tp${i}`).value);
+        if (isNaN(val)) {
+            document.getElementById("out2").innerText = "error: completa todas las temperaturas.";
+            return;
+        }
+        suma += val;
+    }
+
+    document.getElementById("out2").innerText =
+        "promedio: " + (suma / numP).toFixed(2) + "°c";
+}
+</script>
+
+</body>
+</html>

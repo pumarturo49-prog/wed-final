@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clasificación de presión arterial</title>
+</head>
+<body>
+    <section id="e1">
+        <h3>clasificación de presión arterial</h3>
+
+        <input type="number" id="sis" placeholder="sistólica">
+        <input type="number" id="dia" placeholder="diastólica">
+        <button onclick="clasificarPresion()">clasificar</button>
+
+        <div class="output" id="out1"></div>
+    </section>
+
+<script>
+function clasificarPresion() {
+    let s = parseInt(document.getElementById("sis").value);
+    let d = parseInt(document.getElementById("dia").value);
+    let r = "";
+
+    if (s < 120 && d < 80) r = "normal";
+    else if (s >= 120 && s <= 129 && d < 80) r = "elevada";
+    else if ((s >= 130 && s <= 139) || (d >= 80 && d <= 89)) r = "hta grado 1";
+    else if (s >= 140 || d >= 90) r = "hta grado 2";
+    else r = "valores no clasificados";
+
+    document.getElementById("out1").innerText = "clasificación: " + r;
+}
+</script>
+
+</body>
+</html>

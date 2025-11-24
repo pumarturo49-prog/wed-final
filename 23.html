@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contar focos de calor (>45°C)</title>
+</head>
+<body>
+    <section id="e3">
+        <h3>focos de calor</h3>
+
+        <p>ingresa temperaturas. usa 0 para terminar.</p>
+
+        <input type="number" id="temp" placeholder="temperatura">
+        <button onclick="agregarTemperatura()">agregar</button>
+        <button onclick="finalizarConteo()">finalizar</button>
+
+        <div class="output" id="out3"></div>
+    </section>
+
+<script>
+let temps = [];
+
+function agregarTemperatura() {
+    let t = parseFloat(document.getElementById("temp").value);
+    if (t === 0) return;
+    temps.push(t);
+    document.getElementById("out3").innerText =
+        "temperaturas: " + temps.join(", ");
+}
+
+function finalizarConteo() {
+    let cont = 0;
+
+    for (let i = 0; i < temps.length; i++) {
+        if (temps[i] > 45) cont++;
+    }
+
+    document.getElementById("out3").innerText =
+        "focos de calor (>45°C): " + cont;
+}
+</script>
+
+</body>
+</html>

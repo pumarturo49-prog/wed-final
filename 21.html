@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clasificación de calidad del aire</title>
+</head>
+<body>
+    <section id="e1">
+        <h3>calidad del aire (aqi)</h3>
+
+        <input type="number" id="aqi" placeholder="ingresa valor de aqi">
+        <button onclick="clasificarAqi()">clasificar</button>
+
+        <div class="output" id="out1"></div>
+    </section>
+
+<script>
+function clasificarAqi() {
+    let v = parseInt(document.getElementById("aqi").value);
+    let r = "";
+
+    if (v <= 50) r = "bueno";
+    else if (v <= 100) r = "moderado";
+    else if (v <= 150) r = "dañino para sensibles";
+    else if (v <= 200) r = "dañino";
+    else if (v <= 300) r = "muy dañino";
+    else r = "peligroso";
+
+    document.getElementById("out1").innerText = "calidad del aire: " + r;
+}
+</script>
+
+</body>
+</html>

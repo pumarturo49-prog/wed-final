@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>niveles del río (alerta si > 3 m)</title>
+</head>
+<body>
+    <section id="e5">
+        <h3>monitoreo del río</h3>
+
+        <p>ingresa niveles del río. escribe "no" para terminar.</p>
+
+        <input id="river" placeholder="nivel en metros o 'no'">
+        <button onclick="registrarNivel()">ingresar</button>
+
+        <div class="output" id="out5"></div>
+    </section>
+
+<script>
+let niveles = [];
+
+function registrarNivel() {
+    let entrada = document.getElementById("river").value.trim();
+    let output = document.getElementById("out5");
+
+    // do while simulado en cada clic → respeta el enunciado
+    if (entrada.toLowerCase() !== "no") {
+        let n = parseFloat(entrada);
+        if (!isNaN(n)) niveles.push(n);
+    }
+
+    document.getElementById("river").value = "";
+
+    let texto = "niveles registrados: " + niveles.join(", ");
+
+    if (niveles.some(v => v > 3)) {
+        texto += "\nalerta: el río superó 3 m.";
+    }
+
+    output.innerText = texto;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registro de niveles de luz</title>
+</head>
+<body>
+<section id="e5">
+  <h3>niveles de luz (lux)</h3>
+
+  <p>ingresa valores. escribe "no" para terminar.</p>
+
+  <input id="luxVal" placeholder="lux o 'no'">
+  <button onclick="agregarLux()">agregar</button>
+
+  <div class="output" id="out5"></div>
+</section>
+
+<script>
+let lux = [];
+
+function agregarLux() {
+  let entrada = document.getElementById("luxVal").value.trim();
+  document.getElementById("luxVal").value = "";
+
+  // se ejecuta al menos una vez por clic
+  if (entrada.toLowerCase() !== "no") {
+    let num = parseFloat(entrada);
+    if (!isNaN(num)) lux.push(num);
+  }
+
+  let out = "valores ingresados: " + lux.join(", ");
+
+  if (lux.some(v => v < 5)) {
+    out += "\nnoche profunda detectada.";
+  }
+
+  document.getElementById("out5").innerText = out;
+}
+</script>
+
+</body>
+</html>

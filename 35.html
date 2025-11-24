@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repetir mediciones de saturación spo₂</title>
+</head>
+<body>
+    <section id="e5">
+        <h3>medición de saturación spo₂</h3>
+
+        <p>ingresa saturaciones. escribe "no" para terminar.</p>
+
+        <input id="spo" placeholder="spo2 o 'no'">
+
+        <button onclick="agregarSaturacion()">agregar</button>
+
+        <div class="output" id="out5"></div>
+    </section>
+
+<script>
+let sats = [];
+
+function agregarSaturacion() {
+    let entrada = document.getElementById("spo").value.trim();
+    document.getElementById("spo").value = "";
+
+    // do while simulado: se ejecuta cada vez que el usuario hace clic
+    if (entrada.toLowerCase() !== "no") {
+        let num = parseFloat(entrada);
+        if (!isNaN(num)) sats.push(num);
+    }
+
+    document.getElementById("out5").innerText =
+        "spo2 registradas: " + sats.join(", ");
+}
+</script>
+
+</body>
+</html>

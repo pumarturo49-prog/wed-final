@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clasificación de residuos</title>
+</head>
+<body>
+    <section id="e4">
+        <h3>tipo de residuo</h3>
+
+        <p>1=orgánico, 2=plástico, 3=papel/cartón, 4=vidrio</p>
+
+        <input type="number" id="res" placeholder="código (1-4)">
+        <button onclick="clasificarResiduo()">clasificar</button>
+
+        <div class="output" id="out4"></div>
+    </section>
+
+<script>
+function clasificarResiduo() {
+    let c = parseInt(document.getElementById("res").value);
+    let r = "";
+
+    switch (c) {
+        case 1: r = "orgánico"; break;
+        case 2: r = "plástico"; break;
+        case 3: r = "papel/cartón"; break;
+        case 4: r = "vidrio"; break;
+        default: r = "código inválido";
+    }
+
+    document.getElementById("out4").innerText = "residuo: " + r;
+}
+</script>
+
+</body>
+</html>

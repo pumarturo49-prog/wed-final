@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promedio de niveles de ruido</title>
+</head>
+
+<body>
+    <section id="e2">
+        <h3>ruido ambiental</h3>
+
+        <input type="number" id="nMed" placeholder="cantidad de mediciones">
+        <button onclick="establecerMediciones()">establecer</button>
+
+        <div id="ruidoInputs"></div>
+        <button onclick="calcularPromedio()">calcular promedio</button>
+
+        <div class="output" id="out2"></div>
+    </section>
+
+<script>
+let totalR = 0;
+
+function establecerMediciones() {
+    totalR = parseInt(document.getElementById("nMed").value);
+    let cont = document.getElementById("ruidoInputs");
+    cont.innerHTML = "";
+
+    for (let i = 0; i < totalR; i++) {
+        cont.innerHTML += `<input id="r${i}" type="number" placeholder="dB ${i+1}"><br>`;
+    }
+}
+
+function calcularPromedio() {
+    let suma = 0;
+
+    for (let i = 0; i < totalR; i++) {
+        let valor = document.getElementById(`r${i}`).value;
+        if (valor === "" || isNaN(parseFloat(valor))) {
+
+            document.getElementById("out2").innerText =
+                "error: completa todas las mediciones.";
+            return;
+        }
+
+        suma += parseFloat(valor);
+    }
+
+    document.getElementById("out2").innerText =
+        "promedio de ruido: " + (suma / totalR).toFixed(2) + " db";
+}
+</script>
+
+</body>
+</html>

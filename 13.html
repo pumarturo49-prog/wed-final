@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conteo de cráteres</title>
+</head>
+<body>
+
+<section id="e3">
+    <h3>conteo de cráteres lunares mayores a 50 km</h3>
+
+    <p>escribe diámetros; coloca 0 para finalizar.</p>
+
+    <input type="number" id="valor_crater" placeholder="diámetro en km">
+    <button onclick="agregar()">añadir</button>
+    <button onclick="terminar()">terminar</button>
+
+    <div id="salida"></div>
+</section>
+
+<script>
+let lista_crateres = [];
+
+function agregar() {
+    let dato = parseFloat(document.getElementById("valor_crater").value);
+
+    if (dato === 0) return;
+
+    lista_crateres.push(dato);
+
+    document.getElementById("salida").innerText =
+        "valores ingresados: " + lista_crateres.join(", ");
+}
+
+function terminar() {
+    let indice = 0;
+    let cantidad = 0;
+
+    while (indice < lista_crateres.length) {
+        if (lista_crateres[indice] > 50) {
+            cantidad++;
+        }
+        indice++;
+    }
+
+    document.getElementById("salida").innerText =
+        "cráteres mayores a 50 km: " + cantidad;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contar pacientes con fiebre (≥38°C)</title>
+</head>
+<body>
+    <section id="e3">
+        <h3>contar pacientes con fiebre</h3>
+
+        <p>ingresa temperaturas, 0 para terminar.</p>
+
+        <input type="number" id="tfi" placeholder="temperatura">
+        <button onclick="agregarTemperatura()">agregar</button>
+        <button onclick="finalizarConteo()">finalizar</button>
+
+        <div class="output" id="out3"></div>
+
+    </section>
+
+<script>
+let tempsF = [];
+
+function agregarTemperatura() {
+    let t = parseFloat(document.getElementById("tfi").value);
+    if (t === 0) return;
+    tempsF.push(t);
+
+    document.getElementById("out3").innerText =
+        "registradas: " + tempsF.join(", ");
+}
+
+function finalizarConteo() {
+    let cont = 0;
+
+    for (let i = 0; i < tempsF.length; i++) {
+        if (tempsF[i] >= 38) cont++;
+    }
+
+    document.getElementById("out3").innerText =
+        "pacientes con fiebre (≥38°C): " + cont;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Identificar cuerpo celeste</title>
+</head>
+<body>
+
+<section id="e4">
+    <h3>Identificar cuerpo celeste</h3>
+
+    <p>Códigos: 1=estrella, 2=planeta, 3=cometa, 4=asteroide, 5=galaxia</p>
+
+    <input type="number" id="ce" placeholder="Ingresa un código (1-5)">
+    <button onclick="identificarCuerpo()">Identificar</button>
+
+    <div class="output" id="out4"></div>
+
+</section>
+
+<script>
+function identificarCuerpo() {
+    const codigo = parseInt(document.getElementById("ce").value);
+    let resultado = "";
+
+    switch (codigo) {
+        case 1: resultado = "estrella"; break;
+        case 2: resultado = "planeta"; break;
+        case 3: resultado = "cometa"; break;
+        case 4: resultado = "asteroide"; break;
+        case 5: resultado = "galaxia"; break;
+        default: resultado = "código inválido";
+    }
+
+    document.getElementById("out4").innerText = "cuerpo celeste: " + resultado;
+}
+</script>
+
+</body>
+</html>

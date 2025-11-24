@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>promedio de distancias</title>
+</head>
+<body>
+<section id="e2">
+    <h3>registro de distancias entre planetas</h3>
+    <input type="number" id="cant" placeholder="número de valores">
+    <button onclick="crear_inputs()">crear campos</button>
+    <div id="lista_distancias"></div>
+    <button onclick="calcular_promedio()">obtener promedio</button>
+    <div class="output" id="salida"></div>
+</section>
+<script>
+let cantidad = 0;
+
+function crear_inputs() {
+    cantidad = parseInt(document.getElementById("cant").value);
+    let contenedor = document.getElementById("lista_distancias");
+    contenedor.innerHTML = "";
+    for (let i = 0; i < cantidad; i++) {
+        contenedor.innerHTML +=
+            '<input type="number" id="d' + i + '" placeholder="distancia ' + (i + 1) + ' (millones km)"><br>';
+    }
+}
+
+function calcular_promedio() {
+    let suma = 0;
+
+    for (let i = 0; i < cantidad; i++) {
+        let valor = document.getElementById("d" + i).value;
+        suma += parseFloat(valor);
+    }
+    let resultado = suma / cantidad;
+    document.getElementById("salida").innerText =
+        "promedio calculado: " + resultado.toFixed(2) + " millones de km";
+}
+</script>
+</body>
+</html>
